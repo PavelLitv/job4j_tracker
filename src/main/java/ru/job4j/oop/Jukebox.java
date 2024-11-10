@@ -11,8 +11,8 @@ public class Jukebox {
 
     public static void main(String[] args) {
         Jukebox jukebox = new Jukebox();
-        jukebox.music(1);
         jukebox.music(2);
         jukebox.music(3);
+        jukebox.music(1);
     }
 }
