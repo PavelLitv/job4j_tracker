@@ -20,11 +20,17 @@ public class Calculator {
         return a / x;
     }
 
+    public int sumAllOperation(int a) {
+        return sum(a) + minus(a) + multiply(a) + divide(a);
+    }
+
     public static void main(String[] args) {
         int result = minus(3);
         System.out.println(result);
         Calculator calculator = new Calculator();
         result = calculator.divide(15);
+        System.out.println(result);
+        result = calculator.sumAllOperation(2);
         System.out.println(result);
     }
 }
