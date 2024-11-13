@@ -52,10 +52,20 @@ public class Tracker {
         return false;
     }
 
+    public boolean delete(int id) {
+        int index = indexOf(id);
+        if (index != -1) {
+            System.arraycopy(items, index + 1, items, index, items.length - index - 1);
+            items[items.length - 1] = null;
+            return true;
+        }
+        return false;
+    }
+
     private int indexOf(int id) {
         int result = -1;
         for (int index = 0; index < size; index++) {
-            if (items[index].getId() == id) {
+            if (items[index] != null && items[index].getId() == id) {
                 result = index;
                 break;
             }
