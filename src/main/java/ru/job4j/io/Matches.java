@@ -16,9 +16,9 @@ public class Matches {
                 count -= matches;
                 turn = !turn;
                 System.out.printf("На столе осталось %d.\n", count);
-                continue;
+            } else {
+                System.out.println("Допустимый ввод от 1 до 3 спичек включительно и не более остатка");
             }
-            System.out.println("Допустимый ввод от 1 до 3 спичек включительно и не более остатка");
         }
         if (!turn) {
             System.out.println("Выиграл первый игрок");
