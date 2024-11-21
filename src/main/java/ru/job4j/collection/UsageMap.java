@@ -9,6 +9,7 @@ public class UsageMap {
         data.put("pasha@ya.ru", "Pavel Li");
         data.put("serg@ya.ru", "Sergey Petrov");
         data.put("unknow@ya.ru", "Pavel Li");
+        data.put("serg@ya.ru", "Yana Muh");
         for (String key : data.keySet()) {
             System.out.println(key + ": " + data.get(key));
         }
