@@ -29,12 +29,11 @@ public class Analyze {
     public static List<Tuple> averageScoreBySubject(Stream<Pupil> stream) {
         return stream
                 .flatMap(s -> s.subjects().stream())
-                .collect(
-                        groupingBy(
-                                Subject::name,
-                                LinkedHashMap::new,
-                                averagingDouble(Subject::score)
-                        ))
+                .collect(groupingBy(
+                        Subject::name,
+                        LinkedHashMap::new,
+                        averagingDouble(Subject::score)
+                ))
                 .entrySet().stream()
                 .map(entry -> new Tuple(entry.getKey(), entry.getValue()))
                 .toList();
@@ -56,11 +55,10 @@ public class Analyze {
         return stream
                 .flatMap(s -> s.subjects().stream())
                 .collect(groupingBy(
-                                Subject::name,
-                                LinkedHashMap::new,
-                                summingDouble(Subject::score)
-                        )
-                )
+                        Subject::name,
+                        LinkedHashMap::new,
+                        summingDouble(Subject::score)
+                ))
                 .entrySet().stream()
                 .max(Comparator.comparingDouble(Map.Entry::getValue))
                 .map(entry -> new Tuple(entry.getKey(), entry.getValue()))
