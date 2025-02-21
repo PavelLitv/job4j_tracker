@@ -19,14 +19,14 @@ public class SqlTracker implements Store {
 
     private void init() {
         try (InputStream input = SqlTracker.class.getClassLoader()
-                .getResourceAsStream("app.properties")) {
+                .getResourceAsStream("db/liquibase.properties")) {
             Properties config = new Properties();
             config.load(input);
-            Class.forName(config.getProperty("jdbc.driver"));
+            Class.forName(config.getProperty("driver-class-name"));
             connection = DriverManager.getConnection(
-                    config.getProperty("jdbc.url"),
-                    config.getProperty("database.login"),
-                    config.getProperty("database.password")
+                    config.getProperty("url"),
+                    config.getProperty("username"),
+                    config.getProperty("password")
             );
         } catch (Exception e) {
             throw new IllegalStateException(e);
