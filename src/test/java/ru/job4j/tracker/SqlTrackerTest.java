@@ -98,4 +98,17 @@ public class SqlTrackerTest {
         items.forEach(tracker::add);
         assertThat(tracker.findByName(items.get(0).getName())).containsExactlyInAnyOrder(items.get(0), items.get(3));
     }
+
+    @Test
+    public void deleteItemThenDeletedItOnly() {
+        SqlTracker tracker = new SqlTracker(connection);
+        List<Item> items = List.of(
+                new Item("item1"),
+                new Item("item2"),
+                new Item("item3")
+        );
+        items.forEach(tracker::add);
+        tracker.delete(items.get(0).getId());
+        assertThat(tracker.findAll()).containsExactlyInAnyOrder(items.get(1), items.get(2));
+    }
 }
